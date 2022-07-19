@@ -102,7 +102,7 @@ Note that you can choose the target dataset from phoenix2014/phoenix2014-T/CSL i
 If you find this repo useful in your research works, please consider citing:
 
 ```latex
-@inproceedings{kwon2020motionsqueeze,
+@inproceedings{hu2022temporal,
   title={Temporal Lift Pooling for Continuous Sign Language Recognition},
   author={Lianyu Hu, Liqing Gao, Zekang Liu and Wei Feng},
   booktitle={European conference on computer vision},
