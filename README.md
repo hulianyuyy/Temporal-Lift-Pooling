@@ -1,8 +1,7 @@
 # Temporal Lift Pooling
-This repo holds codes of the paper: Temporal Lift Pooling for Continuous Sign Language Recognition.(ECCV 2022) [[paper]](https://arxiv.org/abs/2104.02330) [[Supplementary Material]](https://arxiv.org/abs/2104.02330)
+This repo holds codes of the paper: Temporal Lift Pooling for Continuous Sign Language Recognition.(ECCV 2022) [[paper]](https://arxiv.org/abs/2207.08734)
 
-This repo is based on [VAC (ICCV 2021)](https://openaccess.thecvf.com/content/ICCV2021/html/
-Min_Visual_Alignment_Constraint_for_Continuous_Sign_Language_Recognition_ICCV_2021_paper.html). Many thanks for their great work!
+This repo is based on [VAC (ICCV 2021)](https://openaccess.thecvf.com/content/ICCV2021/html/Min_Visual_Alignment_Constraint_for_Continuous_Sign_Language_Recognition_ICCV_2021_paper.html). Many thanks for their great work!
 
 Our training and inference procedure is modified from VAC (ICCV 2021). If you are familiar with VAC, you can play with TLP easily!
 ## Prerequisites
@@ -14,10 +13,10 @@ Our training and inference procedure is modified from VAC (ICCV 2021). If you ar
 - sclite [[kaldi-asr/kaldi]](https://github.com/kaldi-asr/kaldi), install kaldi tool to get sclite for evaluation. After installation, create a soft link toward the sclite:    
   `ln -s PATH_TO_KALDI/tools/sctk-2.4.10/bin/sclite ./software/sclite`
 
-- [SeanNaren/warp-ctc](https://github.com/SeanNaren/warp-ctc) for supervision.
+- [SeanNaren/warp-ctc](https://github.com/SeanNaren/warp-ctc) for ctc supervision.
 
 ## Implementation
-The implementation for TLP is given in ./modules/tconv.py. You can choose to use TLP or max pooling or average pooling in line 77-79. 
+The implementation for TLP is given in [./modules/tconv.py](https://github.com/hulianyuyy/Temporal-Lift-Pooling/blob/main/modules/tconv.py). You can choose to use TLP or max pooling or average pooling in line 77-79. 
 
 You can flexibly use TLP for other temporal tasks, e.g. action recogniton or video captioning.
 
@@ -70,21 +69,21 @@ The results of TLP on CSL dataset is placed in the supplementary material.
 
 | Backbone | Dev WER  | Test WER  | Pretrained model                                             |
 | -------- | ---------- | ----------- | ------------------------------------------------------------ |
-| Baseline | 21.2%      | 22.3%       |  --- | 
+| Baseline | 21.2%      | 22.3%       |  ------------------------------------------------------------ | 
 | ResNet18 | 19.7%      | 20.8%       | [[Baidu]](https://pan.baidu.com/s/1QRws8gylNzlpXvU52VCLww) (passwd: tsa2)<br />[[Google Drive]](https://drive.google.com/file/d/1uCIYCz0O7twKG1k_BE9sZ5Q1hga4DXRI/view?usp=sharing) |
 
 ### PHOENIX2014-T dataset
 
 | Backbone | Dev WER  | Test WER  | Pretrained model                                             |
 | -------- | ---------- | ----------- | ------------------------------------------------------------ |
-| Baseline | 21.1%      | 22.8%       |  --- | 
+| Baseline | 21.1%      | 22.8%       |  ------------------------------------------------------------ | 
 | ResNet18 | 19.4%      | 21.2%       | [[Baidu]](https://pan.baidu.com/s/1o8IvZhFuTWM9pZI1U8Y2YQ) (passwd: c6cq)<br />[[Google Drive]](https://drive.google.com/file/d/1xFv0ttMQdU6SMvncEnHT0OT6osUCSXVK/view?usp=sharing) |
 
 ### CSL dataset
 
 | Backbone |  WER  | Pretrained model                                             |
-| -------- | ---------- | ----------- | ------------------------------------------------------------ |
-| Baseline | 7.3%      | --- | 
+| -------- | ----------- | ------------------------------------------------------------ |
+| Baseline | 7.3%      | ------------------------------------------------------------ | 
 | ResNet18 | 1.8%   | [[Baidu]](https://pan.baidu.com/s/1s9pRFSpmr8mrSqXlU9hzqg) (passwd: e1md)<br />[[Google Drive]](https://drive.google.com/file/d/1U0Bnl9E711nfzEZ5FyWFPXF4gv8Bw0Fy/view?usp=sharing) |
 
 ​	To evaluate the pretrained model, run the command below：   
@@ -103,10 +102,11 @@ Note that you can choose the target dataset from phoenix2014/phoenix2014-T/CSL i
 If you find this repo useful in your research works, please consider citing:
 
 ```latex
-@inproceedings{min2021vac,
-  title={Visual Alignment Constraint for Continuous Sign Language Recognition},
-  author={Yuecong Min, Aiming Hao, Xiujuan Chai, Xilin Chen},
-  booktitle={International Conference on Computer Vision (ICCV)},
-  year={2021}
+@inproceedings{kwon2020motionsqueeze,
+  title={Temporal Lift Pooling for Continuous Sign Language Recognition},
+  author={Lianyu Hu, Liqing Gao, Zekang Liu and Wei Feng},
+  booktitle={European conference on computer vision},
+  year={2022},
+  organization={Springer}
 }
 ```
