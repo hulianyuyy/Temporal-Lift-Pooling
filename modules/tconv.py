@@ -9,14 +9,14 @@ class Temporal_LiftPool(nn.Module):
         super(Temporal_LiftPool, self).__init__()
         self.kernel_size = kernel_size
         self.predictor = nn.Sequential(
-            nn.Conv1d(input_size, input_size, kernel_size=5, stride=1, padding=2, groups=input_size), 
+            nn.Conv1d(input_size, input_size, kernel_size=3, stride=1, padding=1, groups=input_size), 
             nn.ReLU(inplace=True),   
             nn.Conv1d(input_size, input_size, kernel_size=1, stride=1, padding=0),
             nn.Tanh(),    
                                     )
 
         self.updater = nn.Sequential(
-            nn.Conv1d(input_size, input_size, kernel_size=5, stride=1, padding=2, groups=input_size),
+            nn.Conv1d(input_size, input_size, kernel_size=3, stride=1, padding=1, groups=input_size),
             nn.ReLU(inplace=True),   
             nn.Conv1d(input_size, input_size, kernel_size=1, stride=1, padding=0),
             nn.Tanh(),    
@@ -26,13 +26,15 @@ class Temporal_LiftPool(nn.Module):
         self.weight1 = Local_Weighting(input_size)
         self.weight2 = Local_Weighting(input_size)
 
-    def forward(self, x,):
-        Xe = x[:,:,::self.kernel_size]
-        Xo = x[:,:,1::self.kernel_size]
+    def forward(self, x):
+        B, C, T= x.size()
+        Xe = x[:,:,:T:self.kernel_size]
+        Xo = x[:,:,1:T:self.kernel_size]
         d = Xo - self.predictor(Xe)
         s = Xe + self.updater(d)
         loss_u = torch.norm(s-Xo, p=2)
         loss_p = torch.norm(d, p=2)
+        s = torch.cat((x[:,:,:0:self.kernel_size], s, x[:,:,T::self.kernel_size]),2)
         return self.weight1(s)+self.weight2(d), loss_u, loss_p
 
 class Local_Weighting(nn.Module):
@@ -105,7 +107,7 @@ class TemporalConv(nn.Module):
         i = 0
         for tempconv in self.temporal_conv:
             if isinstance(tempconv, Temporal_LiftPool):
-                visual_feat, loss_u, loss_d = tempconv(visual_feat, remove_pad = 0) #self.strides[i])
+                visual_feat, loss_u, loss_d = tempconv(visual_feat) #self.strides[i])
                 i +=1
                 loss_LiftPool_u += loss_u
                 loss_LiftPool_p += loss_d
