@@ -88,7 +88,7 @@ The results of TLP on CSL dataset is placed in the supplementary material.
 | Baseline | 7.3%      | ------------------------------------------------------------ | 
 | ResNet18 | 1.8%   | [[Baidu]](https://pan.baidu.com/s/1s9pRFSpmr8mrSqXlU9hzqg) (passwd: e1md)<br />[[Google Drive]](https://drive.google.com/file/d/1U0Bnl9E711nfzEZ5FyWFPXF4gv8Bw0Fy/view?usp=sharing) |
 
-​	To evaluate the pretrained model, you should first change the kernel size of predictor and updater in lift pooling to 5 with padding 2 (Line 12 and Line 19 in [./modules/tconv.py](https://github.com/hulianyuyy/Temporal-Lift-Pooling/blob/main/modules/tconv.py)) and then run the command below：   
+​	To evaluate the pretrained model, (if you test on the CSL dataset, you should first change the kernel size of predictor and updater in lift pooling to 5 with padding 2 (Line 12 and Line 19 in [./modules/tconv.py](https://github.com/hulianyuyy/Temporal-Lift-Pooling/blob/main/modules/tconv.py))), run the command below：   
 `python main.py --device your_device --load-weights path_to_weight.pt --phase test`
 
 ### Training
