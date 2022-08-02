@@ -18,6 +18,8 @@ Our training and inference procedure is modified from VAC (ICCV 2021). If you ar
 ## Implementation
 The implementation for TLP is given in [./modules/tconv.py](https://github.com/hulianyuyy/Temporal-Lift-Pooling/blob/main/modules/tconv.py). You can choose to use TLP or max pooling or average pooling in line 77-79. 
 
+We notice that the kernel sizes of predictor and updater in lift pooling are set as 3 practically (which we wrongly report as 5 in the camera-ready version)
+
 You can flexibly use TLP for other temporal tasks, e.g. action recogniton or video captioning.
 
 ## Data Preparation
@@ -86,7 +88,7 @@ The results of TLP on CSL dataset is placed in the supplementary material.
 | Baseline | 7.3%      | ------------------------------------------------------------ | 
 | ResNet18 | 1.8%   | [[Baidu]](https://pan.baidu.com/s/1s9pRFSpmr8mrSqXlU9hzqg) (passwd: e1md)<br />[[Google Drive]](https://drive.google.com/file/d/1U0Bnl9E711nfzEZ5FyWFPXF4gv8Bw0Fy/view?usp=sharing) |
 
-​	To evaluate the pretrained model, run the command below：   
+​	To evaluate the pretrained model, you should first change the kernel size of predictor and updater in lift pooling to 5 with padding 2 (Line 12 and Line 19 in [./modules/tconv.py](https://github.com/hulianyuyy/Temporal-Lift-Pooling/blob/main/modules/tconv.py)) and then run the command below：   
 `python main.py --device your_device --load-weights path_to_weight.pt --phase test`
 
 ### Training
@@ -97,6 +99,8 @@ The priorities of configuration files are: command line > config file > default 
 
 Note that you can choose the target dataset from phoenix2014/phoenix2014-T/CSL in line 3 in ./config/baseline.yaml.
 
+If you want to train your model on the CSL dataset, please remind to (1) change the training epochs to 20, with steps of [10, 15] to decrease the learning rate in configs/ baseline.yaml. (2) change the kernel size of predictor and updater in lift pooling to 5 with padding 2 (Line 12 and Line 19 in [./modules/tconv.py](https://github.com/hulianyuyy/Temporal-Lift-Pooling/blob/main/modules/tconv.py)).
+ 
 ### Citation
 
 If you find this repo useful in your research works, please consider citing:
