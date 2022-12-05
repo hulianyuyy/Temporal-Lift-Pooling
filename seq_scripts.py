@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 import pdb
 import sys
@@ -141,7 +140,7 @@ def write2file(path, info, output):
                                                  word_idx * 1.0 / 100,
                                                  (word_idx + 1) * 1.0 / 100,
                                                  word[0]))
-=======
+
 import os
 import pdb
 import sys
@@ -284,4 +283,4 @@ def write2file(path, info, output):
                                                  word_idx * 1.0 / 100,
                                                  (word_idx + 1) * 1.0 / 100,
                                                  word[0]))
->>>>>>> 94a08171766cd3bf92905d50045efb2a9197c9ae
+
