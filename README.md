@@ -11,7 +11,10 @@ Our training and inference procedure is modified from VAC (ICCV 2021). If you ar
 - ctcdecode==0.4 [[parlance/ctcdecode]](https://github.com/parlance/ctcdecode)，for beam search decode.
 
 - sclite [[kaldi-asr/kaldi]](https://github.com/kaldi-asr/kaldi), install kaldi tool to get sclite for evaluation. After installation, create a soft link toward the sclite:    
-  `ln -s PATH_TO_KALDI/tools/sctk-2.4.10/bin/sclite ./software/sclite`
+  ```bash
+  mkdir ./software
+  ln -s PATH_TO_KALDI/tools/sctk-2.4.10/bin/sclite ./software/sclite
+  ```
 
 - [SeanNaren/warp-ctc](https://github.com/SeanNaren/warp-ctc) for ctc supervision.
 

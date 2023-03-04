@@ -58,7 +58,7 @@ def seq_train(loader, model, optimizer, device, epoch_idx, recoder, loss_weights
 
 
 def seq_eval(cfg, loader, model, device, mode, epoch, work_dir, recoder):
-    model.train()
+    model.eval()
     total_sent = []
     total_info = []
     #save_file = {}
@@ -140,3 +140,4 @@ def write2file(path, info, output):
                                                  word_idx * 1.0 / 100,
                                                  (word_idx + 1) * 1.0 / 100,
                                                  word[0]))
+
