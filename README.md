@@ -38,7 +38,7 @@ You can choose any one of following datasets to verify the effectiveness of TLP.
 
    ```bash
    cd ./preprocess
-   python data_preprocess.py --process-image --multiprocessing
+   python dataset_preprocess.py --process-image --multiprocessing
    ```
 
 ### PHOENIX2014-T dataset
@@ -51,7 +51,7 @@ You can choose any one of following datasets to verify the effectiveness of TLP.
 
    ```bash
    cd ./preprocess
-   python data_preprocess-T.py --process-image --multiprocessing
+   python dataset_preprocess-T.py --process-image --multiprocessing
    ```
 
 ### CSL dataset
@@ -66,7 +66,7 @@ The results of TLP on CSL dataset is placed in the supplementary material.
 
    ```bash
    cd ./preprocess
-   python data_preprocess-CSL.py --process-image --multiprocessing
+   python dataset_preprocess-CSL.py --process-image --multiprocessing
    ``` 
 ## Inference
 
